@@ -34,9 +34,9 @@ const bookGenres = books.map((book) => book.genre);
     }
     
   });
- commonGenres.sort((a, b) => b.count - a.count);
-           
-  return commonGenres.slice(0, 5);
+
+const finalReturn = sortAndSlice(commonGenres)
+  return finalReturn;
 
 }
 
@@ -51,11 +51,11 @@ function getMostPopularBooks(books) {
   }, []);
   
 
- commonTitles.sort((a, b) => b.count - a.count);
-  return commonTitles.slice(0, 5);
+const finalReturn = sortAndSlice(commonTitles)
+  return finalReturn;
 
 }
- 
+
 
 function getMostPopularAuthors(books, authors) {
 
@@ -73,10 +73,17 @@ function getMostPopularAuthors(books, authors) {
     commonAuthors.push(authorInfo);
   }
 
- let finalResult = commonAuthors.sort((authorA, authorB) => authorA.count < authorB.count ? 1 : -1 );
+const finalReturn = sortAndSlice(commonAuthors)
+  return finalReturn;
+}
+
+
+// helper function
+
+function sortAndSlice (variable){
+ let finalResult = variable.sort((authorA, authorB) => authorA.count < authorB.count ? 1 : -1 );
   
   return finalResult.slice(0, 5);
-  
 }
 
 
